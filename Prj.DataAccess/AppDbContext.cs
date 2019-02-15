@@ -7,9 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Prj.DataAccess
 {
-    class AppDbContext : IdentityDbContext<User, Role, string, UserLogin, UserRole, UserClaim>
+public class AppDbContext : IdentityDbContext<User, Role, string, UserLogin, UserRole, UserClaim>
     {
         public AppDbContext() : base("Default")
         {
@@ -44,7 +45,9 @@ namespace Prj.DataAccess
 
         }
         #region User
-        public DbSet<UserToken> UserTokens { get; set; }
+        public virtual DbSet<UserToken> UserTokens { get; set; }
+
         #endregion
+       
     }
 }
