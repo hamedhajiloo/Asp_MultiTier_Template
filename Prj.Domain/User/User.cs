@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Prj.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Prj.Domain.User
+namespace Prj.Domain.Users
 {
     /// <summary>
     /// کاربران
@@ -64,14 +65,29 @@ namespace Prj.Domain.User
         public string PostalCode { get; set; }
 
         /// <summary>
+        /// شماره کارت بانکی
+        /// </summary>
+        public string BankCardNumber { get; set; }
+
+        /// <summary>
         /// آواتار کاربر
         /// </summary>
         public string Avatar { get; set; }
 
         /// <summary>
+        /// جنسیت
+        /// </summary>
+        public Gender Gender { get; set; }
+
+        /// <summary>
         /// کد ملی
         /// </summary>
         public string NationalId { get; set; }
+
+        /// <summary>
+        /// عضویت در خبر نامه
+        /// </summary>
+        public bool NewsLetter { get; set; }
 
         /// <summary>
         /// سریال مربوط به توکن کاربر
@@ -82,6 +98,17 @@ namespace Prj.Domain.User
         /// آخرین تاریخ ورود
         /// </summary>
         public DateTime? LastLoggedIn { get; set; }
+
+        /// <summary>
+        /// آدرس
+        /// </summary>
+        public string Address { get; set; }
+
+        /// <summary>
+        /// شارژ کیف پول
+        /// </summary>
+        [Range(0, int.MaxValue)]
+        public long WalletCharge { get; set; }
 
         /// <summary>
         /// تاریخ عضویت
@@ -97,5 +124,8 @@ namespace Prj.Domain.User
 
 
         public virtual List<UserToken> UserTokens { get; set; }
+        public IList<UserPicture> UserPictures { get; set; }
+        public IList<UserSocialNetworkList> UserSocialNetworks { get; set; }
+        public IList<UserCart> UserCarts { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace Prj.Domain.User
+namespace Prj.Domain.Users
 {
     public class UserLogin : IdentityUserLogin<string>
     {

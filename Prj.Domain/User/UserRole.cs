@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Prj.Domain.User
+namespace Prj.Domain.Users
 {
     /// <summary>
     /// نقش های کاربران

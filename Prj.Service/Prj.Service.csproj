@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -66,7 +69,22 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,11 +93,75 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseService.cs" />
+    <Compile Include="Base\IBaseService.cs" />
+    <Compile Include="Extensions\IdentityExtensions.cs" />
+    <Compile Include="Identity\CustomPasswordValidator.cs" />
+    <Compile Include="Identity\CustomUserValidator.cs" />
+    <Compile Include="Identity\EmailService.cs" />
+    <Compile Include="Identity\IRoleManager.cs" />
+    <Compile Include="Identity\IRoleStoreService.cs" />
+    <Compile Include="Identity\ISignInService.cs" />
+    <Compile Include="Identity\IUserManager.cs" />
+    <Compile Include="Identity\IUserStoreService.cs" />
+    <Compile Include="Identity\RoleManager.cs" />
+    <Compile Include="Identity\RoleStoreService.cs" />
+    <Compile Include="Identity\SignInService.cs" />
+    <Compile Include="Identity\SmsService.cs" />
+    <Compile Include="Identity\UserManager.cs" />
+    <Compile Include="Identity\UserStoreService.cs" />
+    <Compile Include="Locations\CityService.cs" />
+    <Compile Include="Locations\ProvinceService.cs" />
+    <Compile Include="Models\DefaultModels.cs" />
+    <Compile Include="Models\JwtStatusResult.cs" />
+    <Compile Include="Models\Pagable.cs" />
+    <Compile Include="Models\ResultModel.cs" />
+    <Compile Include="Models\SearchServiceModels.cs" />
+    <Compile Include="Models\UserBindingModel.cs" />
+    <Compile Include="Models\UserServiceModels.cs" />
+    <Compile Include="Models\XmlModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\ISecurityService.cs" />
+    <Compile Include="Security\SecurityService.cs" />
+    <Compile Include="TaskSchedulerConfig\JobsRunnerTimer.cs" />
+    <Compile Include="TaskSchedulerConfig\ScheduledTasksCoordinator.cs" />
+    <Compile Include="TaskSchedulerConfig\ScheduledTasksRegistry.cs" />
+    <Compile Include="TaskSchedulerConfig\ScheduledTaskTemplate.cs" />
+    <Compile Include="Users\RoleService.cs" />
+    <Compile Include="Users\UserActiveCodeService.cs" />
+    <Compile Include="Users\UserService.cs" />
+    <Compile Include="Users\UserTokenService.cs" />
+    <Compile Include="Users\UserTransactionService.cs" />
+    <Compile Include="Utilities\ErrorLogService.cs" />
+    <Compile Include="Utilities\GeneratorService.cs" />
+    <Compile Include="Utilities\IErrorLogService.cs" />
+    <Compile Include="Utilities\IGeneratorService.cs" />
+    <Compile Include="Utilities\IPasswordHasherService.cs" />
+    <Compile Include="Utilities\ISecurityService.cs" />
+    <Compile Include="Utilities\IWebMethodService.cs" />
+    <Compile Include="Utilities\IXmlService.cs" />
+    <Compile Include="Utilities\PasswordHasherService.cs" />
+    <Compile Include="Utilities\SecurityService.cs" />
+    <Compile Include="Utilities\WebMethodService.cs" />
+    <Compile Include="Utilities\XmlService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Prj.DataAccess\Prj.DataAccess.csproj">
+      <Project>{1cd3902d-12fc-4ceb-885b-c6e101aa8250}</Project>
+      <Name>Prj.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prj.Domain\Prj.Domain.csproj">
+      <Project>{207870a9-17b0-4c3a-b9a9-033bf5e11faf}</Project>
+      <Name>Prj.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prj.Utilities\Prj.Utilities.csproj">
+      <Project>{8fcf5da4-286a-46c6-95ea-28d46b0e3acf}</Project>
+      <Name>Prj.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

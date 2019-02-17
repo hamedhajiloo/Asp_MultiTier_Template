@@ -5,7 +5,7 @@ namespace Prj.DataAccess.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Prj.DataAccess.AppDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Prj.DataAccess.Context.AppDbContext>
     {
         public Configuration()
         {
@@ -13,7 +13,7 @@ namespace Prj.DataAccess.Migrations
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(Prj.DataAccess.AppDbContext context)
+        protected override void Seed(Prj.DataAccess.Context.AppDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
