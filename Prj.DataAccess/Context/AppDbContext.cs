@@ -7,7 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Prj.Domain.Supports;
 
 namespace Prj.DataAccess.Context
 {
@@ -120,6 +120,15 @@ public class AppDbContext : IdentityDbContext<User, Role, string, UserLogin, Use
         public virtual DbSet<UserToken> UserTokens { get; set; }
 
         #endregion
-       
+
+
+        #region Support
+
+        public DbSet<ErrorLog> ErrorLogs { get; set; }
+        public DbSet<WebMethod> WebMethods { get; set; }
+        public DbSet<Setting> Settings { get; set; }
+
+        #endregion
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Prj.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -30,6 +31,11 @@ namespace Prj.Domain.Users
         [Required]
         [StringLength(1000)]
         public string FaName { get; set; }
+
+        /// <summary>
+        /// نوع پرسنل
+        /// </summary>
+        public PersonnelType? PersonnelType { get; set; }
 
     }
 }

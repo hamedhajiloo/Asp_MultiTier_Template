@@ -101,6 +101,7 @@
     <Compile Include="Enums\ActionStatusCode.cs" />
     <Compile Include="Enums\Active.cs" />
     <Compile Include="Enums\ActiveCodeType.cs" />
+    <Compile Include="Enums\PersonnelType.cs" />
     <Compile Include="Enums\Status.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Enums\TransactionOperation.cs" />
