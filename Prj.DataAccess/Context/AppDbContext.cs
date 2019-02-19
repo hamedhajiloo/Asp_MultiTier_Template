@@ -25,7 +25,7 @@ public class AppDbContext : IdentityDbContext<User, Role, string, UserLogin, Use
         protected override void OnModelCreating(DbModelBuilder builder)
         {
 
-            base.OnModelCreating(builder);
+            
             builder.Entity<User>().ToTable("Users");
             builder.Entity<Role>().ToTable("Roles");
             builder.Entity<UserClaim>().ToTable("User_Claims");
@@ -44,6 +44,7 @@ public class AppDbContext : IdentityDbContext<User, Role, string, UserLogin, Use
                .HasForeignKey(c => c.RoleId)
                .WillCascadeOnDelete(true);
 
+            base.OnModelCreating(builder);
         }
 
 

@@ -20,15 +20,16 @@ namespace Prj.Web
         void Application_Start(object sender, EventArgs e)
         {
             // Code that runs on application startup
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            //WebApiConfig.Register(GlobalConfiguration.Configuration);
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            //GlobalConfiguration.Configure(WebApiConfig.Register);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
             SetDbInitializer();
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
-            Microsoft.AspNet.SignalR.GlobalHost.DependencyResolver = SmObjectFactory.Container.GetInstance<Microsoft.AspNet.SignalR.IDependencyResolver>();
+           // Microsoft.AspNet.SignalR.GlobalHost.DependencyResolver = SmObjectFactory.Container.GetInstance<Microsoft.AspNet.SignalR.IDependencyResolver>();
            // var captchaManager = (DefaultCaptchaManager)CaptchaUtils.CaptchaManager;
 
         }

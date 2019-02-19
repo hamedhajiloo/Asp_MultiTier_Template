@@ -32,7 +32,7 @@ namespace Prj.IoC
                 {
                     s.TheCallingAssembly();
                     s.WithDefaultConventions();
-                    s.Assembly("Prj.Services");
+                    s.Assembly("Prj.Service");
                 });
                 
                 ioc.For<IAppJwtConfiguration>().Singleton().Use(() => AppJwtConfiguration.Config);
