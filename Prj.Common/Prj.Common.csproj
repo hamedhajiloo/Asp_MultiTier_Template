@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EFCommandInterception\SimpleInterceptor.cs" />
     <Compile Include="JsonWebToken\AppJwtConfiguration.cs" />
     <Compile Include="JsonWebToken\AppJwtOptions.cs" />
     <Compile Include="JsonWebToken\AppJwtWriterFormat.cs" />

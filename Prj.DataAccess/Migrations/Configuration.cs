@@ -19,6 +19,7 @@
 
         protected override void Seed(AppDbContext context)
         {
+            
             context.Roles.AddOrUpdate(
                 r => r.Name,
                 new Role { Name = "Administrator", FaName = "مدیر اصلی", PersonnelType = PersonnelType.Administrator },

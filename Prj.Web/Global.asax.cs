@@ -12,6 +12,8 @@ using System.Data.Entity;
 using Prj.DataAccess.Context;
 using Prj.DataAccess.Migrations;
 using System.Web.Optimization;
+using System.Data.Entity.Infrastructure.Interception;
+using Prj.Common.EFCommandInterception;
 
 namespace Prj.Web
 {
@@ -29,8 +31,11 @@ namespace Prj.Web
             
             SetDbInitializer();
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
-           // Microsoft.AspNet.SignalR.GlobalHost.DependencyResolver = SmObjectFactory.Container.GetInstance<Microsoft.AspNet.SignalR.IDependencyResolver>();
-           // var captchaManager = (DefaultCaptchaManager)CaptchaUtils.CaptchaManager;
+            // Microsoft.AspNet.SignalR.GlobalHost.DependencyResolver = SmObjectFactory.Container.GetInstance<Microsoft.AspNet.SignalR.IDependencyResolver>();
+            // var captchaManager = (DefaultCaptchaManager)CaptchaUtils.CaptchaManager;
+
+
+            DbInterception.Add(new SimpleInterceptor()); //for log sql command in Debug Window
 
         }
 

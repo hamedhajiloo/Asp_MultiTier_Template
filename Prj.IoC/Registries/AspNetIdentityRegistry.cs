@@ -10,7 +10,7 @@ using Prj.DataAccess.Context;
 using Prj.Services.Identity;
 using Prj.Domain.Users;
 
-namespace Prj.IocConfig.Registries
+namespace Prj.IoC.Registries
 {
     public class AspNetIdentityRegistry : Registry
     {

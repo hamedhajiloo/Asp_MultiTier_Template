@@ -6,7 +6,7 @@ using Microsoft.Owin.Security.OAuth;
 using Microsoft.Owin.Security.Infrastructure;
 using Prj.Common.JsonWebToken;
 using WebApi.OutputCache.Core.Cache;
-using Prj.IocConfig.Registries;
+using Prj.IoC.Registries;
 
 namespace Prj.IoC
 {
