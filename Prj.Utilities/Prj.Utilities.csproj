@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attribute\CustomValidationAdapter.cs" />
+    <Compile Include="Attribute\EnsureOneElementAttribute.cs" />
+    <Compile Include="Attribute\NationalIdAttribute.cs" />
     <Compile Include="CMath.cs" />
     <Compile Include="DateTimeExtentions.cs" />
     <Compile Include="EnumExtentions.cs" />
@@ -60,6 +63,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework">
       <Version>2.2.2</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNet.Mvc">
+      <Version>5.2.7</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNet.WebApi.Client">
       <Version>5.2.7</Version>

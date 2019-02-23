@@ -14,6 +14,8 @@ using Prj.DataAccess.Migrations;
 using System.Web.Optimization;
 using System.Data.Entity.Infrastructure.Interception;
 using Prj.Common.EFCommandInterception;
+using System.ComponentModel.DataAnnotations;
+using Prj.Utilities.Attributes;
 
 namespace Prj.Web
 {
@@ -21,22 +23,33 @@ namespace Prj.Web
     {
         void Application_Start(object sender, EventArgs e)
         {
-            // Code that runs on application startup
-            //WebApiConfig.Register(GlobalConfiguration.Configuration);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AreaRegistration.RegisterAllAreas();
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            GlobalConfiguration.Configure(WebApiConfig.Register);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
-            
-            SetDbInitializer();
-            ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
-            // Microsoft.AspNet.SignalR.GlobalHost.DependencyResolver = SmObjectFactory.Container.GetInstance<Microsoft.AspNet.SignalR.IDependencyResolver>();
-            // var captchaManager = (DefaultCaptchaManager)CaptchaUtils.CaptchaManager;
+            try
+            {
+                // Code that runs on application startup
+                //WebApiConfig.Register(GlobalConfiguration.Configuration);
+                BundleConfig.RegisterBundles(BundleTable.Bundles);
+                AreaRegistration.RegisterAllAreas();
+                FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+                GlobalConfiguration.Configure(WebApiConfig.Register);
+                RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+                SetDbInitializer();
+                ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
+                // Microsoft.AspNet.SignalR.GlobalHost.DependencyResolver = SmObjectFactory.Container.GetInstance<Microsoft.AspNet.SignalR.IDependencyResolver>();
+                // var captchaManager = (DefaultCaptchaManager)CaptchaUtils.CaptchaManager;
+                DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(RequiredAttribute), typeof(CustomRequiredAttributeAdapter));
+                DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(StringLengthAttribute), typeof(CustomStringLengthAttributeAdapter));
+                DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(RangeAttribute), typeof(CustomRangeAttributeAdapter));
 
 
-            DbInterception.Add(new SimpleInterceptor()); //for log sql command in Debug Window
+                DbInterception.Add(new SimpleInterceptor()); //for log sql command in Debug Window
 
+            }
+            catch
+            {
+                HttpRuntime.UnloadAppDomain(); // سبب ری استارت برنامه و آغاز مجدد آن با درخواست بعدی می‌شود
+                throw;
+            }
         }
 
 
